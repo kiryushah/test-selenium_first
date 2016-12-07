@@ -68,7 +68,7 @@ class visible_elements(unittest.TestCase):
         geo = len(self.driver.find_elements_by_xpath("//tr[@class = 'row']"))
         for i in range(geo):
             self.driver.find_elements_by_xpath("//tr[@class = 'row']")[i].find_element_by_tag_name('a').click()
-            select_zones = self.driver.find_elements_by_xpath("//*[@id='table-zones']/tbody/tr/td[3]/select")
+            select_zones = self.driver.find_elements_by_xpath("//*[@id='table-zones']/tbody/tr/td[3]/select/option[@selected = 'selected']")
             name_zones = []
             for b in select_zones:
                 bbb = b.text
@@ -77,12 +77,11 @@ class visible_elements(unittest.TestCase):
                     print('ok')
                 else:
                     print('false')
-                    
             geo_zones=self.driver.find_element_by_xpath("//span[text()='Geo Zones']").click()
             print(name_zones)
             print(sorted(name_zones))            
                             
-    def tearDown(self)
+    def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
